@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Valentine’s, Henouda 💝</title>
+  <style>
+    :root{
+      --bg1:#fff5f7;
+      --bg2:#f3f8ff;
+      --card:#ffffffcc;
+      --text:#222;
+      --muted:#5f5f5f;
+      --pink:#ff4d7d;
+      --pink2:#ff87a6;
+      --shadow: 0 18px 45px rgba(0,0,0,.10);
+      --radius: 22px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+      background:
+        radial-gradient(900px 520px at 15% 15%, var(--bg2), transparent 70%),
+        radial-gradient(900px 520px at 85% 25%, var(--bg1), transparent 70%),
+        linear-gradient(180deg, #ffffff, #fff6fb);
+      padding:24px;
+      position:relative;
+    }
+
+    /* Floating hearts background */
+    .float-layer{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      overflow:hidden;
+      opacity:.55;
+    }
+    .heart{
+      position:absolute;
+      width:16px; height:16px;
+      transform: rotate(45deg);
+      background: linear-gradient(135deg, var(--pink), var(--pink2));
+      border-radius: 4px;
+      animation: floatUp 9s linear infinite;
+      filter: blur(.1px);
+    }
+    .heart::before, .heart::after{
+      content:"";
+      position:absolute;
+      width:16px; height:16px;
+      background: inherit;
+      border-radius: 50%;
+    }
+    .heart::before{ left:-8px; top:0; }
+    .heart::after{ left:0; top:-8px; }
+    @keyframes floatUp{
+      0%{ transform: translateY(18vh) rotate(45deg); opacity:0; }
+      10%{opacity:.9}
+      100%{ transform: translateY(-120vh) rotate(45deg); opacity:0; }
+    }
+
+    /* Kisses surprise */
+    .kiss{
+      position:absolute;
+      font-size: 22px;
+      animation: kissPop 1.6s ease-out forwards;
+      filter: drop-shadow(0 10px 10px rgba(0,0,0,.12));
+      pointer-events:none;
+      user-select:none;
+    }
+    @keyframes kissPop{
+      0%{ transform: translateY(0) scale(.6) rotate(-8deg); opacity:0; }
+      10%{ opacity:1; }
+      70%{ opacity:1; }
+      100%{ transform: translateY(-140px) scale(1.25) rotate(10deg); opacity:0; }
+    }
+
+    .card{
+      width:min(820px, 100%);
+      background: var(--card);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,.65);
+      overflow:hidden;
+      position:relative;
+    }
+
+    .corner{
+      position:absolute;
+      top:0; right:0;
+      width:120px; height:120px;
+      background: linear-gradient(135deg, rgba(255,77,125,.95), rgba(255,135,166,.95));
+      clip-path: polygon(100% 0, 0 0, 100% 100%);
+      opacity:.9;
+    }
+    .corner-text{
+      position:absolute;
+      top:20px; right:10px;
+      transform: rotate(45deg);
+      color:white;
+      font-weight:900;
+      font-size:12px;
+      letter-spacing:.8px;
+      text-shadow: 0 2px 10px rgba(0,0,0,.18);
+      user-select:none;
+    }
+
+    .topbar{
+      padding:22px 22px 0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius: 999px;
+      background: rgba(255,77,125,.10);
+      border: 1px solid rgba(255,77,125,.25);
+      color: #c51649;
+      font-weight: 800;
+      letter-spacing:.2px;
+      user-select:none;
+    }
+    .badge span{
+      width:10px;height:10px;border-radius:50%;
+      background: linear-gradient(135deg, var(--pink), var(--pink2));
+      box-shadow: 0 0 0 4px rgba(255,77,125,.12);
+    }
+
+    .actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .btn{
+      appearance:none;
+      border:0;
+      cursor:pointer;
+      border-radius: 999px;
+      padding: 11px 16px;
+      font-weight: 900;
+      color:white;
+      background: linear-gradient(135deg, var(--pink), var(--pink2));
+      box-shadow: 0 12px 30px rgba(255,77,125,.30);
+      transition: transform .08s ease, box-shadow .2s ease, filter .2s ease;
+      white-space:nowrap;
+    }
+    .btn.secondary{
+      color:#b3123f;
+      background: rgba(255,255,255,.65);
+      border: 1px solid rgba(255,77,125,.28);
+      box-shadow: none;
+      font-weight: 900;
+    }
+    .btn:active{
+      transform: translateY(1px) scale(.99);
+      box-shadow: 0 10px 22px rgba(255,77,125,.25);
+    }
+    .btn.secondary:active{ box-shadow:none; }
+
+    .content{
+      padding: 18px 26px 26px;
+      text-align:center;
+    }
+    h1{
+      margin: 12px 0 6px;
+      font-size: clamp(28px, 4vw, 46px);
+      line-height: 1.1;
+    }
+    .subtitle{
+      margin: 0 auto 16px;
+      max-width: 66ch;
+      color: var(--muted);
+      font-size: clamp(14px, 1.8vw, 18px);
+      line-height:1.7;
+    }
+
+    .big-heart{
+      width: 120px;
+      height: 120px;
+      margin: 18px auto 10px;
+      position: relative;
+      transform: rotate(45deg);
+      background: linear-gradient(135deg, var(--pink), var(--pink2));
+      border-radius: 18px;
+      box-shadow: 0 16px 40px rgba(255,77,125,.35);
+      animation: pulse 1.6s ease-in-out infinite;
+    }
+    .big-heart::before, .big-heart::after{
+      content:"";
+      position:absolute;
+      width:120px;height:120px;
+      background: inherit;
+      border-radius: 50%;
+    }
+    .big-heart::before{ left:-60px; top:0; }
+    .big-heart::after{ left:0; top:-60px; }
+    @keyframes pulse{
+      0%,100%{ transform: rotate(45deg) scale(1); }
+      50%{ transform: rotate(45deg) scale(1.06); }
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      margin-top: 14px;
+    }
+    @media (max-width: 720px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    .panel{
+      text-align:left;
+      background: rgba(255,255,255,.75);
+      border: 1px solid rgba(255,77,125,.18);
+      border-radius: 18px;
+      padding: 16px 16px;
+      line-height: 1.85;
+      font-size: 16px;
+    }
+    .panel h2{
+      margin:0 0 8px;
+      font-size: 16px;
+      letter-spacing:.2px;
+      color:#b3123f;
+    }
+    .panel strong{ color:#b3123f; }
+
+    .panel.ar{
+      text-align:right;
+      direction: rtl;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Tahoma, Arial, "Noto Naskh Arabic", "Noto Kufi Arabic", "Amiri", "Apple Color Emoji","Segoe UI Emoji";
+    }
+
+    .footer{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:center;
+      align-items:center;
+      padding: 0 26px 24px;
+      color: var(--muted);
+      font-size: 13.5px;
+    }
+    .pill{
+      padding: 9px 12px;
+      border-radius:999px;
+      border: 1px solid rgba(0,0,0,.08);
+      background: rgba(255,255,255,.6);
+      user-select:none;
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .heart, .big-heart, .kiss{ animation:none !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="float-layer" aria-hidden="true" id="floatLayer"></div>
+
+  <main class="card" id="card">
+    <div class="corner" aria-hidden="true"></div>
+    <div class="corner-text">HENOUDA</div>
+
+    <div class="topbar">
+      <div class="badge"><span></span> Valentine’s Message for Mom</div>
+      <div class="actions">
+        <button class="btn secondary" type="button" onclick="togglePanels()">Toggle Message ✨</button>
+        <button class="btn" type="button" onclick="surprise()">Surprise 💋</button>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="big-heart" aria-hidden="true"></div>
+
+      <h1>Happy Valentine’s, Henouda 💝</h1>
+      <p class="subtitle">
+        For you, Mom — even though I’m “just your son”, you deserve love and gratitude
+        for everything you’ve done. Always.
+      </p>
+
+      <section class="grid" id="panels">
+        <article class="panel">
+          <h2>English</h2>
+          <strong>Dear Mom (Henouda),</strong><br/>
+          Happy Valentine’s Day ❤️<br/>
+          I want you to know how much I appreciate you.<br/>
+          Thank you for every sacrifice, every prayer, and every time you stayed strong for us.<br/>
+          Even though I’m your son, you still deserve love, kindness, and gratitude — today and every day.<br/><br/>
+          <strong>With all my love,</strong><br/>
+          Rafi 🌷
+        </article>
+
+        <article class="panel ar">
+          <h2>العربية</h2>
+          <strong>أمي الغالية (هنّودة)،</strong><br/>
+          كل عام وأنتِ الحب ❤️<br/>
+          أحب أقول لك قدّيش أنا ممتن لك.<br/>
+          شكراً على كل تعب، وكل دعوة، وكل مرة كنتِ قوية من أجلنا.<br/>
+          حتى لو أنا “بس ابنچ”، أنتِ تستحقين الحب والحنان والامتنان — اليوم وكل يوم.<br/><br/>
+          <strong>كل الحب،</strong><br/>
+          رافي 🌷
+        </article>
+      </section>
+    </div>
+
+    <div class="footer">
+      <div class="pill">Made with love 💗</div>
+      <div class="pill" id="datePill"></div>
+      <div class="pill">Tap “Surprise” for kisses 💋</div>
+    </div>
+  </main>
+
+  <script>
+    // Date (local)
+    const d = new Date();
+    document.getElementById("datePill").textContent =
+      d.toLocaleDateString(undefined, { weekday:"long", year:"numeric", month:"long", day:"numeric" });
+
+    // Floating background hearts (lightweight)
+    const floatLayer = document.getElementById("floatLayer");
+    function spawnHeart(){
+      const h = document.createElement("div");
+      h.className = "heart";
+      const size = 10 + Math.random() * 18;
+      h.style.width = size + "px";
+      h.style.height = size + "px";
+      h.style.left = (Math.random() * 100) + "vw";
+      h.style.animationDuration = (6 + Math.random() * 8) + "s";
+      h.style.opacity = (0.25 + Math.random() * 0.65).toFixed(2);
+      floatLayer.appendChild(h);
+      setTimeout(() => h.remove(), 14000);
+    }
+    for(let i=0;i<14;i++) setTimeout(spawnHeart, i*350);
+    setInterval(spawnHeart, 900);
+
+    // Toggle message section
+    let panelsVisible = true;
+    function togglePanels(){
+      panelsVisible = !panelsVisible;
+      document.getElementById("panels").style.display = panelsVisible ? "grid" : "none";
+      // tiny burst of hearts
+      for(let i=0;i<8;i++) setTimeout(spawnHeart, i*90);
+    }
+
+    // Surprise: kisses appear on the card
+    function surprise(){
+      const card = document.getElementById("card");
+      const rect = card.getBoundingClientRect();
+
+      const count = 18;
+      for(let i=0;i<count;i++){
+        const k = document.createElement("div");
+        k.className = "kiss";
+        k.textContent = "💋";
+
+        // Random position inside card (with padding)
+        const x = rect.left + 20 + Math.random() * (rect.width - 40);
+        const y = rect.top + 60 + Math.random() * (rect.height - 120);
+
+        k.style.left = x + "px";
+        k.style.top  = y + "px";
+        k.style.fontSize = (18 + Math.random() * 18).toFixed(0) + "px";
+        k.style.animationDuration = (1.2 + Math.random() * 1.2).toFixed(2) + "s";
+
+        document.body.appendChild(k);
+        setTimeout(() => k.remove(), 2200);
+      }
+
+      // extra sparkle: small burst of hearts
+      for(let i=0;i<10;i++) setTimeout(spawnHeart, i*70);
+    }
+  </script>
+</body>
+</html>
